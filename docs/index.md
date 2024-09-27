@@ -23,3 +23,20 @@ features:
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
 
+```no-line-numbers
+不显示行号
+```
+
+::: code-group
+
+```sh [pnpm]
+#查询pnpm版本
+pnpm -v
+```
+
+```sh [yarn]
+#查询yarn版本
+yarn -v
+```
+
+:::
