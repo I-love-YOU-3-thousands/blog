@@ -25,6 +25,9 @@ devDependencies:
   '@types/vue':
     specifier: ^2.0.0
     version: 2.0.0
+  busuanzi.pure.js:
+    specifier: ^1.0.3
+    version: 1.0.3
   canvas-confetti:
     specifier: ^1.9.3
     version: 1.9.3
@@ -974,6 +977,10 @@ packages:
 
   /boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
+    dev: true
+
+  /busuanzi.pure.js@1.0.3:
+    resolution: {integrity: sha512-tPULdyx+8NNb9geZYDpktKmHAYx9f2LEOBaHyWCaM7iPEMIa/43KgYAUluuU7YG9UFSOFpj4dO7Nj2Vlu3V9Rg==}
     dev: true
 
   /canvas-confetti@1.9.3:

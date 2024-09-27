@@ -49,5 +49,4 @@ features:
 <HomeUnderline />
 
 <confetti />
-
-<busuanzi />
+<browseStatistics />

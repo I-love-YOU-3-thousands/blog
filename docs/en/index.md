@@ -37,4 +37,4 @@ features:
 
 <confetti />
 
-<busuanzi />
+<browseStatistics />
