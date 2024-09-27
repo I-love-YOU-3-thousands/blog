@@ -1,7 +1,7 @@
 <!-- 评论组件 -->
 <template>
   <Layout>
-    <template #doc-footer-before> </template>
+    <template #doc-footer-before> <backtotop /></template>
     <template #doc-after>
       <div style="margin-top: 24px">
         <Giscus
