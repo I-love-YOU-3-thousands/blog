@@ -32,7 +32,6 @@ concurrency:
 jobs:
   # 构建任务
   build:
-
     runs-on: ubuntu-latest
 
     # node v20 运行
