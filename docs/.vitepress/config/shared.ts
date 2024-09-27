@@ -7,7 +7,6 @@ export const shared = defineConfig({
   rewrites: {
     "zh/:rest*": ":rest*",
   },
-
   lastUpdated: true,
   cleanUrls: true, //开启纯净链接
   metaChunk: true,
@@ -48,25 +47,15 @@ export const shared = defineConfig({
     ['meta', { property: 'og:image', content: 'https://vitepress.dev/vitepress-og.jpg' }],
     ['meta', { property: 'og:url', content: 'https://vitepress.dev/' }],
     ['script', { src: 'https://cdn.usefathom.com/script.js', 'data-site': 'AZBRSFGG', 'data-spa': 'auto', defer: '' }],
-    [
-        'link',
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' }
-      ],
-      [
-        'link',
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }
-      ],
-      [
-        'link',
-        { href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap', rel: 'stylesheet' }
-      ]
+    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
+    ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
+    ['link', { href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap', rel: 'stylesheet' }],
+    // ['script', { src: 'https://giscus.app/client.js', type: 'module' }]
 
   ],
   ignoreDeadLinks: true, //忽略死链
-
   themeConfig: {
     // logo: { src: "/logo.svg", width: 24, height: 24 },
-
     socialLinks: [
       {
         icon: "github",
