@@ -6,7 +6,7 @@ const require = createRequire(import.meta.url);
 const pkg = require("vitepress/package.json");
 
 export const zh = defineConfig({
-  lang: "zh-Hans",
+  lang: "zh-CN",
   description: "通过vitepress 构建的 Vue 风格的静态站点博客。",
 
   themeConfig: {
@@ -83,6 +83,20 @@ function nav(): DefaultTheme.NavItem[] {
             { text: "Frontmatter", link: "/guide/basicConfiguration/frontmatter" }
 
 
+          ],
+        },
+        {
+          text: "进阶玩法",
+          items: [
+            { text: "Markdown", link: "/guide/advancedGameplay/markdown" },
+            { text: "团队", link: "/guide/advancedGameplay/team" },
+            { text: "静态部署", link: "/guide/advancedGameplay/assets" },
+            { text: "样式美化", link: "/guide/advancedGameplay/style" },
+            { text: "组件", link: "/guide/advancedGameplay/components" },
+            { text: "布局插槽", link: "/guide/advancedGameplay/layout" },
+            { text: "插件", link: "/guide/advancedGameplay/plugin" },
+            { text: "更新及卸载", link: "/guide/advancedGameplay/update" },
+            { text: "搭建导航", link: "/guide/advancedGameplay/nav" }
           ],
         },
       ]

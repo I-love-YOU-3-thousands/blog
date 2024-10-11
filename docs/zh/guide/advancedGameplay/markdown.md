@@ -10,7 +10,7 @@ title: markdown
 >
 > VitePress 中的链接可以直接渲染
 
-<Linkcard url="https://yiov.top/computer/markdown.html" title="Markdown的简单用法" description="https://yiov.top/computer/markdown.html" logo="/markdown.png"/>
+<Linkcard url="https://yiov.top/computer/markdown.html" title="Markdown的简单用法" description="https://yiov.top/computer/markdown.html" logo="/blog/markdown.png"/>
 
 ## 基础功能
 

@@ -84,8 +84,6 @@ function getList(params, path1, pathname) {
       });
     }
   }
-
-  console.log(res, "热身热身热身撒大苏打实打实");
   return sortData(res);
 }
 

@@ -6,8 +6,6 @@ title: 快速上手
 
 # 快速上手
 
-<Linkcard url="https://vitepress.new/" title="在线体验及调试（StackBlitz 驱动）" description="https://vitepress.new/" logo="/svg/stackblitz_logo.svg"/>
-
 ## 前期工作
 
 ::: tip 说明

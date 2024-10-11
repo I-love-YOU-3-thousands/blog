@@ -1,5 +1,6 @@
 ---
 layout: home
+layoutClass: "m-home-layout"
 
 hero:
   # 主标题
@@ -17,7 +18,7 @@ hero:
     - theme: brand
       # 按钮文字
       text: 开始
-      link: /getting-started
+      link: /guide/basicConfiguration/getting-started
     - theme: alt
       text: GitHub
       link: https://github.com/I-love-YOU-3-thousands/blog
