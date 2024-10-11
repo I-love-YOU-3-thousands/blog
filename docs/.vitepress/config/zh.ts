@@ -1,5 +1,6 @@
 import { createRequire } from "module";
 import { defineConfig, type DefaultTheme } from "vitepress";
+import { set_sidebar } from '../theme/utils/autoSiderbar.mjs'
 
 const require = createRequire(import.meta.url);
 const pkg = require("vitepress/package.json");
@@ -10,10 +11,16 @@ export const zh = defineConfig({
 
   themeConfig: {
     nav: nav(),
+    // sidebar: {
+    //   "/guide/": { base: "/guide/", items: sidebarGuide() },
+    //   "/reference/": { base: "/reference/", items: sidebarReference() },
+    // },
 
-    sidebar: {
-      "/guide/": { base: "/guide/", items: sidebarGuide() },
-      "/reference/": { base: "/reference/", items: sidebarReference() },
+
+    sidebar:
+    {
+      '/guide/': set_sidebar('zh/guide'),
+      '/interview/': set_sidebar('zh/interview'),
     },
 
     editLink: {
@@ -57,10 +64,28 @@ export const zh = defineConfig({
 
 function nav(): DefaultTheme.NavItem[] {
   return [
+
     {
-      text: "指南",
-      link: "/guide/what-is-vitepress",
-      activeMatch: "/guide/",
+      text: "指南", activeMatch: "/guide/", items: [
+        {
+          text: "介绍",
+          items: [
+            { text: "前言", link: "/guide/introduce/preface" },
+
+          ],
+        },
+        {
+          text: "基础配置",
+          items: [
+            { text: "快速上手", link: "/guide/basicConfiguration/getting-started" },
+            { text: "配置", link: "/guide/basicConfiguration/configuration" },
+            { text: "页面", link: "/guide/basicConfiguration/page" },
+            { text: "Frontmatter", link: "/guide/basicConfiguration/frontmatter" }
+
+
+          ],
+        },
+      ]
     },
     {
       text: "参考",

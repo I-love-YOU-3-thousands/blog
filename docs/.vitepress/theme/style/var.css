@@ -23,7 +23,7 @@
   }
   
   /* 也可自行单独修改brand按钮 */
-  /* :root {
+  :root {
     --vp-button-brand-border: #F6CEEC;
     --vp-button-brand-text: #F6CEEC;
     --vp-button-brand-bg: #D939CD;
@@ -33,7 +33,7 @@
     --vp-button-brand-hover-bg: #D939CD;
   
     --vp-button-brand-active-border: #F6CEEC;
-  } */
+  }
 
 
   h1 {

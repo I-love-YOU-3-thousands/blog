@@ -9,6 +9,7 @@ import backtotop from "./components/backtotop.vue";
 import { inBrowser } from 'vitepress'
 import busuanzi from 'busuanzi.pure.js'
 import './style/index.css'
+import 'virtual:group-icons.css' //代码组样式
 import { h } from "vue";
 export default {
 

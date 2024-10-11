@@ -1,4 +1,5 @@
 import { defineConfig } from "vitepress";
+import { groupIconMdPlugin, groupIconVitePlugin, localIconLoader } from 'vitepress-plugin-group-icons'
 import { search as enSearch } from "./en";
 import { search as zhSearch } from "./zh";
 export const shared = defineConfig({
@@ -17,7 +18,8 @@ export const shared = defineConfig({
       // 开启图片懒加载
       lazyLoading: true,
     },
-    theme: "material-theme-palenight",
+    lineNumbers: true,
+    // theme: "material-theme-palenight",
     codeTransformers: [
       // We use `[!!code` in demo to prevent transformation, here we revert it back.
       {
@@ -28,12 +30,25 @@ export const shared = defineConfig({
     ],
     // 组件插入h1标题下
     config: (md) => {
+      md.use(groupIconMdPlugin)
       md.renderer.rules.heading_close = (tokens, idx, options, env, slf) => {
         let htmlResult = slf.renderToken(tokens, idx, options);
         if (tokens[idx].tag === 'h1') htmlResult += `<ArticleMetadata />`;
         return htmlResult;
       }
     }
+  },
+  vite: {
+    plugins: [
+      groupIconVitePlugin({
+        customIcon: {
+          ts: localIconLoader(import.meta.url, '../../public/svg/typescript.svg'), //本地ts图标导入
+          md: localIconLoader(import.meta.url, '../../public/svg/md.svg'), //markdown图标
+          css: localIconLoader(import.meta.url, '../../public/svg/css.svg'), //css图标
+          js: 'logos:javascript', //js图标
+        },
+      }) //代码组图标
+    ],
   },
 
   sitemap: {
@@ -63,6 +78,14 @@ export const shared = defineConfig({
   ],
   ignoreDeadLinks: true, //忽略死链
   themeConfig: {
+    //上次更新时间
+    lastUpdated: {
+      text: '上次更新时间',
+      formatOptions: {
+        dateStyle: 'short', // 可选值full、long、medium、short
+        timeStyle: 'medium' // 可选值full、long、medium、short
+      },
+    },
     // logo: { src: "/logo.svg", width: 24, height: 24 },
     socialLinks: [
       {
