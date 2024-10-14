@@ -20,6 +20,7 @@ export const zh = defineConfig({
     sidebar:
     {
       '/guide/': set_sidebar('zh/guide'),
+      '/scientificInternet/': set_sidebar('zh/scientificInternet'),
       '/interview/': set_sidebar('zh/interview'),
     },
 
@@ -137,6 +138,11 @@ function nav(): DefaultTheme.NavItem[] {
           link: "/base/advanced/index",
         },
       ],
+    },
+    {
+      text: "科学上网",
+      link: "/scientificInternet/introduce",
+      activeMatch: "/scientificInternet/",
     },
     {
       text: pkg.version,
