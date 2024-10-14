@@ -20,7 +20,7 @@ export const zh = defineConfig({
     sidebar:
     {
       '/guide/': set_sidebar('zh/guide'),
-      '/scientificInternet/': set_sidebar('zh/scientificInternet'),
+      '/knowledgePopularization/': set_sidebar('zh/knowledgePopularization'),
       '/interview/': set_sidebar('zh/interview'),
     },
 
@@ -140,9 +140,20 @@ function nav(): DefaultTheme.NavItem[] {
       ],
     },
     {
-      text: "科学上网",
-      link: "/scientificInternet/introduce",
-      activeMatch: "/scientificInternet/",
+      text: "知识科普",
+      items:[
+        {
+          text: "科学上网",
+          link:'/knowledgePopularization/scientificInternet/introduce',
+          activeMatch: "/knowledgePopularization/scientificInternet",
+        },
+        {
+          text: "电脑相关",
+          link:'/knowledgePopularization/computer',
+          activeMatch: "/knowledgePopularization/computer",
+        },
+      ],
+     
     },
     {
       text: pkg.version,

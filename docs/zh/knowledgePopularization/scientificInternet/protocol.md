@@ -52,7 +52,6 @@ TCP/IP模型是一种网络通信协议模型，由传输控制协议（TCP）�
 * 传输层（Transport Layer）
 
 * 应用层（Application Layer）
-
 即：将OSI模型的 `应用层、表示层、会话层` 合并成了一个 `应用层`
 :::
 

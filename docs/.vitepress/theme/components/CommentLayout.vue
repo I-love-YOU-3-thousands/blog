@@ -1,7 +1,17 @@
 <!-- 评论组件 -->
 <template>
   <Layout>
-    <template #doc-footer-before> <backtotop /></template>
+    <template #doc-footer-before
+      ><ElImageViewer
+        v-if="show"
+        :infinite="false"
+        hide-on-click-modal
+        teleported
+        :url-list="previewImageInfo.list"
+        :initial-index="previewImageInfo.idx"
+        @close="show = false" />
+      <backtotop
+    /></template>
     <template #doc-after>
       <div style="margin-top: 24px">
         <Giscus
@@ -27,10 +37,64 @@
 <script lang="ts" setup>
 import Giscus from "@giscus/vue";
 import DefaultTheme from "vitepress/theme";
-import { watch, nextTick, provide } from "vue";
+import {
+  watch,
+  nextTick,
+  provide,
+  onMounted,
+  onUnmounted,
+  reactive,
+  ref,
+} from "vue";
+import { ElImageViewer } from "element-plus";
 import { inBrowser, useData } from "vitepress";
+import { log } from "console";
+// import {imagePreview} from './imagePreview.vue'
 const { isDark, page } = useData();
 const { Layout } = DefaultTheme;
+const show = ref(false);
+const previewImageInfo = reactive<{ url: string; list: string[]; idx: number }>(
+  {
+    url: "",
+    list: [],
+    idx: 0,
+  }
+);
+function previewImage(e: Event) {
+  const target = e.target as HTMLElement;
+  const currentTarget = e.currentTarget as HTMLElement;
+  if (target.tagName.toLowerCase() === "img") {
+    const imgs = currentTarget.querySelectorAll<HTMLImageElement>(
+      ".content-container .main img"
+    );
+    const idx = Array.from(imgs).findIndex((el) => el === target);
+    const urls = Array.from(imgs).map((el) => el.src);
+
+    const url = target.getAttribute("src");
+    previewImageInfo.url = url!;
+    previewImageInfo.list = urls;
+    previewImageInfo.idx = idx;
+    console.log(url, "asdasdasasdddddddddddd");
+
+    // 兼容点击main之外的图片
+    if (idx === -1 && url) {
+      previewImageInfo.list.push(url);
+      previewImageInfo.idx = previewImageInfo.list.length - 1;
+    }
+    show.value = true;
+  }
+}
+onMounted(() => {
+  const docDomContainer = document.querySelector("#VPContent");
+  console.log("wwwwwwwwwwww", docDomContainer);
+
+  docDomContainer?.addEventListener("click", previewImage);
+});
+
+onUnmounted(() => {
+  const docDomContainer = document.querySelector("#VPContent");
+  docDomContainer?.removeEventListener("click", previewImage);
+});
 
 watch(isDark, (dark) => {
   if (!inBrowser) return;
