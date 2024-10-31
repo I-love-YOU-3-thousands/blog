@@ -1,7 +1,7 @@
 ---
 sort: 5
-sideName:wordPress
-title:wordPress
+sideName: wordPress
+title: wordPress
 ---
 
 # wordpress免费主机
