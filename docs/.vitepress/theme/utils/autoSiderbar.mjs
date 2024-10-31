@@ -47,7 +47,8 @@ function getList(params, path1, pathname) {
       res.push({
         // text: params[file].replace(/^\d+\./g, ""),
         text: sideName,
-        collapsed: false,
+        collapsible: true, // 表示可折叠
+        collapsed: true, // 表示默认折叠
         items: getList(files, dir, `${pathname}/${params[file]}`),
         sort: sortValue,
       });
