@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { useData } from "vitepress";
+import { useData, withBase } from "vitepress";
 import { computed, ref, onMounted } from "vue";
 import { countWord } from "../utils/functions";
+import type { Post } from "../utils/types";
 
 const { page } = useData();
 const date = computed(() => new Date(page.value.lastUpdated!));
@@ -25,6 +26,12 @@ const imageTime = computed(() => {
 const readTime = computed(() => {
   return Math.ceil((wordTime.value + imageTime.value) / 60);
 });
+
+const props = defineProps<{
+  article?: Post;
+  type?: string;
+}>();
+const dataSource = computed(() => props.article);
 
 function analyze() {
   document.querySelectorAll(".meta-des").forEach((v) => v.remove());
@@ -106,10 +113,32 @@ onMounted(() => {
       </svg>
       时长: {{ readTime }} 分钟
     </p>
+
+    <div class="tags">
+      <template v-if="type == 'card'">
+        <span
+          class="tag"
+          v-for="item in dataSource.frontmatter.tags.slice(0, 2)"
+          ><a class="a" :href="withBase(`?tag=${item.toString()}`)">
+            {{ "#" + item }}</a
+          ></span
+        >
+        <span class="tag" v-if="dataSource.frontmatter.tags.length > 2"
+          >...</span
+        >
+      </template>
+      <!-- <template v-else>
+        <span class="tag" v-for="item in dataSource.frontmatter.tags"
+          ><a class="a" :href="withBase(`?tag=${item.toString()}`)">
+            {{ "#" + item }}</a
+          ></span
+        >
+      </template> -->
+    </div>
   </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
 .word {
   color: var(--vp-c-text-2);
   font-size: 15px;

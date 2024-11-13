@@ -1,6 +1,7 @@
 ---
 layout: home
 layoutClass: "m-home-layout"
+type: home
 
 hero:
   # 主标题

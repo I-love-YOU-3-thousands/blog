@@ -1,0 +1,169 @@
+.postlist.grid {
+    display: grid;
+    row-gap: 1.1rem;
+    column-gap: 1.1rem;
+}
+
+@media (min-width: 550px) {
+    .postlist.grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .VPDoc {
+        padding: 48px 32px 32px !important;
+    }
+
+    .VPDoc.has-aside:not(.has-sidebar) .postlist.grid,
+    .VPDoc.has-sidebar:not(.has-aside) .postlist.grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .VPDoc.has-sidebar:not(.has-aside) .postlist.grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .VPDoc:not(.has-sidebar):not(.has-aside) .postlist.grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 960px) {
+    .VPNavBar:not(.top) .content-body {
+        position: relative;
+        background-color: var(--bgfilter)!important;
+        backdrop-filter:blur(8px);
+    }
+    .fireworkwrap {
+        display: block;
+    }
+    .VPDoc .container>.content {
+        padding: 0 32px 32px;
+    }
+
+    .VPSidebar {
+        min-height: calc(100% - var(--vp-nav-height));
+        padding-bottom:32px!important;
+    }
+
+    .home .VPDoc:not(.has-sidebar):not(.has-aside) .container {
+        max-width: calc(var(--vp-layout-max-width) - 64px);
+    }
+
+    .home .VPDoc .content {
+        max-width: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .home .VPDoc.has-aside:not(.has-sidebar) .container {
+        max-width: calc(var(--vp-layout-max-width) - 64px);
+    }
+
+    .home .VPDoc:not(.has-sidebar) .container .content {
+        max-width: 100%;
+    }
+
+
+    .VPDoc.has-aside:not(.has-sidebar) .postlist.grid,
+    .VPDoc.has-sidebar:not(.has-aside) .postlist.grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .VPDoc:not(.has-sidebar):not(.has-aside) .postlist.grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1100px) {
+    .home .VPDoc:not(.has-sidebar):not(.has-aside) .container {
+        max-width: calc(var(--vp-layout-max-width) - 64px);
+    }
+
+    .home .VPDoc.has-aside:not(.has-sidebar) .container {
+        max-width: calc(var(--vp-layout-max-width) - 64px);
+    }
+
+    .home .VPDoc:not(.has-sidebar) .container .content {
+        max-width: 100%;
+    }
+
+    .VPDoc.has-aside:not(.has-sidebar) .postlist.grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .VPDoc.has-aside.has-sidebar .postlist.grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .VPDoc.has-sidebar:not(.has-aside) .postlist.grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .VPDoc:not(.has-sidebar):not(.has-aside) .postlist.grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1280px) {
+    .home .VPDoc:not(.has-sidebar):not(.has-aside) .container {
+        max-width: calc(var(--vp-layout-max-width) - 64px);
+    }
+
+    .home .VPDoc.has-aside:not(.has-sidebar) .container {
+        max-width: calc(var(--vp-layout-max-width) - 64px);
+    }
+
+    .home .VPDoc:not(.has-sidebar) .container .content {
+        max-width: 100%;
+    }
+
+    .VPDoc.has-aside:not(.has-sidebar) .postlist.grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .VPDoc.has-aside.has-sidebar .postlist.grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+
+    .VPDoc.has-sidebar:not(.has-aside) .postlist.grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .VPDoc:not(.has-sidebar):not(.has-aside) .postlist.grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1440px) {
+    .home .VPDoc:not(.has-sidebar):not(.has-aside) .container {
+        max-width: calc(var(--vp-layout-max-width) - 64px);
+    }
+
+    .home .VPDoc.has-aside:not(.has-sidebar) .container {
+        max-width: calc(var(--vp-layout-max-width) - 64px);
+    }
+
+    .home .VPDoc:not(.has-sidebar) .container .content {
+        max-width: 100%;
+    }
+
+    .VPDoc.has-aside:not(.has-sidebar) .postlist.grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .VPDoc.has-aside.has-sidebar .postlist.grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+
+    .VPDoc.has-sidebar:not(.has-aside) .postlist.grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .VPDoc:not(.has-sidebar):not(.has-aside) .postlist.grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}

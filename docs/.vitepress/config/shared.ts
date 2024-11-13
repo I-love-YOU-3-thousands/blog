@@ -9,7 +9,7 @@ export const shared = defineConfig({
     "zh/:rest*": ":rest*",
   },
   lastUpdated: true,
-  cleanUrls: true, //开启纯净链接
+  cleanUrls: false, //开启纯净链接
   metaChunk: true,
 
   markdown: {

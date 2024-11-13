@@ -1,6 +1,6 @@
 import { createRequire } from "module";
 import { defineConfig, type DefaultTheme } from "vitepress";
-import { set_sidebar } from '../theme/utils/autoSiderbar.mjs'
+import { set_sidebar, } from '../theme/utils/autoSiderbar.mjs'
 
 const require = createRequire(import.meta.url);
 const pkg = require("vitepress/package.json");
@@ -22,6 +22,7 @@ export const zh = defineConfig({
       '/guide/': set_sidebar('zh/guide'),
       '/knowledgePopularization/': set_sidebar('zh/knowledgePopularization'),
       '/interview/': set_sidebar('zh/interview'),
+      '/resourceSharing/': set_sidebar('zh/resourceSharing'),
     },
 
     editLink: {
@@ -103,11 +104,6 @@ function nav(): DefaultTheme.NavItem[] {
       ]
     },
     {
-      text: "参考",
-      link: "/reference/site-config",
-      activeMatch: "/reference/",
-    },
-    {
       text: "前端面经",
       activeMatch: "/interview/",
       items: [
@@ -131,30 +127,43 @@ function nav(): DefaultTheme.NavItem[] {
         {
           //精选模块
           text: "精选模块",
-          link: "/interview/featuredModules/index",
-        },
-        {
-          text: "情景再现",
-          link: "/base/advanced/index",
+          items: [
+            { text: "精选篇", link: "/interview/featuredModules/featured" },
+            { text: "进阶篇", link: "/interview/featuredModules/advanced" },
+            {
+              text: "场景再现",
+              link: "/interview/featuredModules/sceneReproduction",
+            },
+            {
+              text: "面试案例",
+              link: "/interview/basicAdvanced/4-comprehensive",
+            },
+          ],
         },
       ],
     },
     {
       text: "知识科普",
-      items:[
+      items: [
         {
           text: "科学上网",
-          link:'/knowledgePopularization/scientificInternet/introduce',
+          link: '/knowledgePopularization/scientificInternet/introduce',
           activeMatch: "/knowledgePopularization/scientificInternet",
         },
         {
           text: "电脑相关",
-          link:'/knowledgePopularization/computer',
+          link: '/knowledgePopularization/computer/system/wepe',
           activeMatch: "/knowledgePopularization/computer",
         },
+        {
+          text: "网站相关",
+          link: '/knowledgePopularization/websiteRelated/base/server/introduce',
+          activeMatch: "/knowledgePopularization/websiteRelated",
+        },
       ],
-     
+
     },
+    { text: 'Guide', link: 'zh/resourceSharing/index.md' },
     {
       text: pkg.version,
       items: [

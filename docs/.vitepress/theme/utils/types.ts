@@ -20,3 +20,8 @@ export interface NavData {
     title: string
     items: NavLink[]
 }
+
+export interface Post {
+    frontmatter?: Record<string, any>
+    relativePath?: string
+}
