@@ -163,7 +163,7 @@ function nav(): DefaultTheme.NavItem[] {
       ],
 
     },
-    { text: 'Guide', link: 'zh/resourceSharing/index.md' },
+    { text: 'Guide', link: '/resourceSharing/index.md', activeMatch: "/resourceSharing/", },
     {
       text: pkg.version,
       items: [
