@@ -7,7 +7,6 @@
     <div class="acontent">
       <div class="main">
         <div class="cover">
-          {{ article.relativePath }}
           <a :href="withBase(article.relativePath)" class="a">
             <img
               :title="article.frontmatter?.description"
