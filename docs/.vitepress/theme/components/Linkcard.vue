@@ -4,6 +4,7 @@ interface Props {
   title: string;
   description: string;
   logo: string;
+  color: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -11,6 +12,7 @@ const props = withDefaults(defineProps<Props>(), {
   title: "",
   description: "",
   logo: "",
+  color: "",
 });
 </script>
 
@@ -25,6 +27,18 @@ const props = withDefaults(defineProps<Props>(), {
       </div>
     </a>
   </div>
+
+  <!-- <div class="framework-row">
+    <a
+      class="framework-card"
+      :href="props.url"
+      target="_blank"
+      rel="noopener"
+      :style="{ '--glow-color': props.color }"
+    >
+      <img :src="props.logo" alt="logo" />
+    </a>
+  </div> -->
 </template>
 
 <style>

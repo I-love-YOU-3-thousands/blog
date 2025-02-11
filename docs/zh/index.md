@@ -24,7 +24,7 @@ hero:
       text: GitHub
       link: https://github.com/I-love-YOU-3-thousands/blog
     - theme: sponsor
-      text: 搭建导航
+      text: 我的导航
       link: /nav/
 
 features:

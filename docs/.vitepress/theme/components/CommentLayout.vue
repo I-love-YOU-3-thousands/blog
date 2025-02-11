@@ -2,8 +2,8 @@
 <template>
   <Layout>
     <template v-if="page.frontmatter.type == 'cardList'" #sidebar-nav-before>
-      <span class="date">🔥&nbsp;更新时间：{{ frontmatter.type }}</span>
-      <button @click="next">点击点击</button>
+      <span class="date">🔥&nbsp;推荐文章：{{ frontmatter.type }}</span>
+      <button @click="next">开发中</button>
     </template>
     <template v-if="page.frontmatter.type == 'cardList'" #doc-before>
       <PageNavi type="top" />
@@ -47,8 +47,8 @@
 </template>
 
 <script lang="ts" setup>
-import Giscus from "@giscus/vue";
-import DefaultTheme from "vitepress/theme";
+import Giscus from '@giscus/vue';
+import DefaultTheme from 'vitepress/theme';
 import {
   computed,
   watch,
@@ -58,14 +58,14 @@ import {
   onUnmounted,
   reactive,
   ref,
-} from "vue";
-import { useBrowserLocation, useStorage } from "@vueuse/core";
-import { ElImageViewer } from "element-plus";
-import { inBrowser, useData, useRouter } from "vitepress";
-import { data as themeposts } from "../utils/posts.data";
-import type { Post } from "../utils/types";
-import { formatSearch } from "../utils/functions";
-import Page from "./cardPage.vue";
+} from 'vue';
+import { useBrowserLocation, useStorage } from '@vueuse/core';
+import { ElImageViewer } from 'element-plus';
+import { inBrowser, useData, useRouter } from 'vitepress';
+import { data as themeposts } from '../utils/posts.data';
+import type { Post } from '../utils/types';
+import { formatSearch } from '../utils/functions';
+import Page from './cardPage.vue';
 const router = useRouter();
 const { Layout } = DefaultTheme;
 const location = useBrowserLocation();
@@ -90,29 +90,29 @@ const { isDark, page, frontmatter } = useData();
 const show = ref(false);
 const previewImageInfo = reactive<{ url: string; list: string[]; idx: number }>(
   {
-    url: "",
+    url: '',
     list: [],
     idx: 0,
   }
 );
 function previewImage(e: Event) {
-  console.log(e, "eeeeeeeeeeee", page.value.frontmatter);
+  console.log(e, 'eeeeeeeeeeee', page.value.frontmatter);
   if (
-    page.value.frontmatter?.type == "cardList" ||
-    page.value.frontmatter?.type == "home"
+    page.value.frontmatter?.type == 'cardList' ||
+    page.value.frontmatter?.type == 'home'
   ) {
     return;
   } else {
     const target = e.target as HTMLElement;
     const currentTarget = e.currentTarget as HTMLElement;
-    if (target.tagName.toLowerCase() === "img") {
+    if (target.tagName.toLowerCase() === 'img') {
       const imgs = currentTarget.querySelectorAll<HTMLImageElement>(
-        ".content-container .main img"
+        '.content-container .main img'
       );
       const idx = Array.from(imgs).findIndex((el) => el === target);
       const urls = Array.from(imgs).map((el) => el.src);
 
-      const url = target.getAttribute("src");
+      const url = target.getAttribute('src');
       previewImageInfo.url = url!;
       previewImageInfo.list = urls;
       previewImageInfo.idx = idx;
@@ -144,16 +144,16 @@ const posts = computed(() => {
     return themeposts.filter(
       (article: any) =>
         article?.frontmatter?.date &&
-        new Date(article?.frontmatter?.date).getFullYear() + "" ==
+        new Date(article?.frontmatter?.date).getFullYear() + '' ==
           selectYear.value &&
-        new Date(article?.frontmatter?.date).getMonth() + 1 + "月" ==
+        new Date(article?.frontmatter?.date).getMonth() + 1 + '月' ==
           selectMonth.value
     );
   } else if (selectYear.value) {
     return themeposts.filter(
       (article: any) =>
         article?.frontmatter?.date &&
-        new Date(article?.frontmatter?.date).getFullYear() + "" ==
+        new Date(article?.frontmatter?.date).getFullYear() + '' ==
           selectYear.value
     );
   } else {
@@ -163,37 +163,37 @@ const posts = computed(() => {
 
 const currentpage = ref(1); //当前第几页
 // const getPosts = ref<Post[]>([]); //当前页的文章
-const activeTag = ref(""); //当前选中的tag
+const activeTag = ref(''); //当前选中的tag
 const selectTag = computed(() => activeTag.value);
-const activeCategory = ref("");
+const activeCategory = ref('');
 const selectCategory = computed(() => activeCategory.value);
-const activeYear = ref("");
-const activeMonth = ref("");
+const activeYear = ref('');
+const activeMonth = ref('');
 const selectYear = computed(() => activeYear.value);
 const selectMonth = computed(() => activeMonth.value);
-const bread = ref("全部内容");
+const bread = ref('全部内容');
 const breadrxt = computed(() => bread.value);
 router.onBeforeRouteChange = (to) => {
-  console.log("to", to, window.location.origin);
+  console.log('to', to, window.location.origin);
   const url = new URL(to, window.location.origin);
   const params = formatSearch(url.search);
-  console.log("笑笑笑笑笑笑笑笑笑", url, params);
-  activeTag.value = params?.tag || "";
-  activeCategory.value = params?.category || "";
-  activeYear.value = params?.year || "";
-  activeMonth.value = params?.month || "";
+  console.log('笑笑笑笑笑笑笑笑笑', url, params);
+  activeTag.value = params?.tag || '';
+  activeCategory.value = params?.category || '';
+  activeYear.value = params?.year || '';
+  activeMonth.value = params?.month || '';
   currentpage.value = Number(params?.page) || 1;
   if (params?.tag) {
-    console.log("new");
-    bread.value = "标签：" + params.tag;
+    console.log('new');
+    bread.value = '标签：' + params.tag;
   } else if (params?.category) {
-    bread.value = "分类：" + params.category;
+    bread.value = '分类：' + params.category;
   } else if (params?.year && params?.month) {
-    bread.value = "存档：" + params.year + "/" + params.month;
+    bread.value = '存档：' + params.year + '/' + params.month;
   } else if (params?.year) {
-    bread.value = "存档：" + params.year;
+    bread.value = '存档：' + params.year;
   } else {
-    bread.value = "全部内容";
+    bread.value = '全部内容';
   }
 };
 onMounted(() => {
@@ -202,13 +202,13 @@ onMounted(() => {
   //   per_page.value * currentpage.value
   // );
 
-  const docDomContainer = document.querySelector("#VPContent");
-  docDomContainer?.addEventListener("click", previewImage);
+  const docDomContainer = document.querySelector('#VPContent');
+  docDomContainer?.addEventListener('click', previewImage);
 });
 
 onUnmounted(() => {
-  const docDomContainer = document.querySelector("#VPContent");
-  docDomContainer?.removeEventListener("click", previewImage);
+  const docDomContainer = document.querySelector('#VPContent');
+  docDomContainer?.removeEventListener('click', previewImage);
 });
 
 const getposts = computed(() => {
@@ -219,50 +219,50 @@ const getposts = computed(() => {
 });
 
 function next() {
-  console.log("点击了");
+  console.log('点击了');
   currentpage.value++;
   console.log(currentpage.value, posts);
 }
 watch(
   [isDark, location],
   ([dark, newlocation], [oldDark, oldLocation]) => {
-    console.log("location", location, oldLocation);
+    console.log('location', location, oldLocation);
     if (location.value.href) {
       const url = new URL(location.value.href!);
-      activeTag.value = url.searchParams.get("tag") || "";
-      activeCategory.value = url.searchParams.get("category") || "";
-      activeYear.value = url.searchParams.get("year") || "";
-      activeMonth.value = url.searchParams.get("month") || "";
-      currentpage.value = Number(url.searchParams.get("page")) || 1;
-      console.log(url.searchParams, "wqwwwwwwwwww");
-      if (url.searchParams.get("tag")) {
-        bread.value = "标签：" + url.searchParams.get("tag");
-      } else if (url.searchParams.get("category")) {
-        bread.value = "分类：" + url.searchParams.get("category");
+      activeTag.value = url.searchParams.get('tag') || '';
+      activeCategory.value = url.searchParams.get('category') || '';
+      activeYear.value = url.searchParams.get('year') || '';
+      activeMonth.value = url.searchParams.get('month') || '';
+      currentpage.value = Number(url.searchParams.get('page')) || 1;
+      console.log(url.searchParams, 'wqwwwwwwwwww');
+      if (url.searchParams.get('tag')) {
+        bread.value = '标签：' + url.searchParams.get('tag');
+      } else if (url.searchParams.get('category')) {
+        bread.value = '分类：' + url.searchParams.get('category');
       } else if (
-        url.searchParams.get("year") &&
-        url.searchParams.get("month")
+        url.searchParams.get('year') &&
+        url.searchParams.get('month')
       ) {
         bread.value =
-          "存档：" +
-          url.searchParams.get("year") +
-          "/" +
-          url.searchParams.get("month");
-      } else if (url.searchParams.get("year")) {
-        bread.value = "存档：" + url.searchParams.get("year");
+          '存档：' +
+          url.searchParams.get('year') +
+          '/' +
+          url.searchParams.get('month');
+      } else if (url.searchParams.get('year')) {
+        bread.value = '存档：' + url.searchParams.get('year');
       } else {
-        bread.value = "全部内容";
+        bread.value = '全部内容';
       }
     }
     if (!inBrowser) return;
 
     const iframe = document
-      .querySelector("giscus-widget")
-      ?.shadowRoot?.querySelector("iframe");
+      .querySelector('giscus-widget')
+      ?.shadowRoot?.querySelector('iframe');
 
     iframe?.contentWindow?.postMessage(
-      { giscus: { setConfig: { theme: dark ? "dark" : "light" } } },
-      "https://giscus.app"
+      { giscus: { setConfig: { theme: dark ? 'dark' : 'light' } } },
+      'https://giscus.app'
     );
 
     // if (oldPage.relativePath != "resourceSharing/index.md") {
@@ -283,10 +283,10 @@ watch(
 
 // 处理主题切换动画
 const enableTransitions = () =>
-  "startViewTransition" in document &&
-  window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+  'startViewTransition' in document &&
+  window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
 
-provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
+provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
   if (!enableTransitions()) {
     isDark.value = !isDark.value;
     return;
@@ -309,8 +309,8 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
     { clipPath: isDark.value ? clipPath.reverse() : clipPath },
     {
       duration: 300,
-      easing: "ease-in",
-      pseudoElement: `::view-transition-${isDark.value ? "old" : "new"}(root)`,
+      easing: 'ease-in',
+      pseudoElement: `::view-transition-${isDark.value ? 'old' : 'new'}(root)`,
     }
   );
 });

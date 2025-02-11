@@ -28,6 +28,13 @@ title: 机场推荐
 :::
 
 
+### 更新：2025-2-11
+
+| 机场 | 说明 | 防走丢 |
+|:-:|:-:|:-:|
+| [流量光机场](https://llgjc1.com/) | 4.9元/月150G<br> | [TG群](https://t.me/llgjctz) |
+| [九毛九机场](https://dash.minizz.online) | 9.9元/月100G<br> | [TG群](https://t.me/jiumaojiu_chat) |
+
 
 ### 更新：2024-8-30
 
@@ -95,7 +102,7 @@ title: 机场推荐
 | [宇宙机场](https://宇宙机场.com) | 8元/年200G/月<br>`网站需挂梯子打开` | [TG群](https://t.me/yuzhoujichang) |
 | [超级机场](https://www.超级机场.com/) | 1元/月100G<br>`网站需挂梯子打开`<br>均速12M/s | [TG群](https://t.me/chaojijichang) |
 | [赔钱机场](https://赔钱机场.com/) | 1.99元/月500G<br>`网站需挂梯子打开` | [TG群](https://t.me/peiqianjichangpd) |
-
+| [流量光机场](https://llgjc1.com/) | 4.9元/月150G<br> | [TG群](https://t.me/llgjctz) |
 
 
 

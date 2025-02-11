@@ -633,6 +633,7 @@ export const NAV_DATA: NavData[] = [
         },
         desc: "在线图片压缩工具",
         link: "https://tinypng.com",
+
       },
       {
         icon: "https://devtool.tech/logo.svg",
@@ -643,6 +644,7 @@ export const NAV_DATA: NavData[] = [
         },
         desc: "开发者武器库，做开发者最专业最好用的专业工具箱",
         link: "https://devtool.tech",
+      
       },
       {
         icon: "https://tool.lu/favicon.ico",
@@ -653,6 +655,7 @@ export const NAV_DATA: NavData[] = [
         },
         desc: "开发人员的工具箱",
         link: "https://tool.lu",
+       
       },
       {
         icon: "/icons/json-cn.ico",
