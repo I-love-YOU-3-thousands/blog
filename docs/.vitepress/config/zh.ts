@@ -19,6 +19,7 @@ export const zh = defineConfig({
     sidebar: {
       '/guide/': set_sidebar('zh/guide'),
       '/knowledgePopularization/': set_sidebar('zh/knowledgePopularization'),
+      '/algo/': set_sidebar('zh/algo'),
       '/interview/': set_sidebar('zh/interview'),
       '/resourceSharing/': set_sidebar('zh/resourceSharing'),
     },
@@ -143,17 +144,35 @@ function nav(): DefaultTheme.NavItem[] {
       ],
     },
     {
-      text: '知识科普',
+      text: '算法学习',
+      activeMatch: '/algo/',
       items: [
         {
-          text: '科学上网',
-          link: '/knowledgePopularization/scientificInternet/introduce',
-          activeMatch: '/knowledgePopularization/scientificInternet',
+          text: '速成目录',
+          link: "/algo/quickLearn/index",
         },
+        {
+          //算法学习
+          text: '算法学习',
+          items: [
+            { text: '基础', link: '/algo/learn/basic/introduce', activeMatch: '/algo/learn/basic' },
+            { text: '第零章', link: '/algo/learn/1zero/introduce', activeMatch: '/algo/learn/1zero' },
+          ],
+        },
+      ],
+    },
+    {
+      text: '知识科普',
+      items: [
         {
           text: '电脑相关',
           link: '/knowledgePopularization/computer/system/wepe',
           activeMatch: '/knowledgePopularization/computer',
+        },
+        {
+          text: '科学上网',
+          link: '/knowledgePopularization/scientificInternet/introduce',
+          activeMatch: '/knowledgePopularization/scientificInternet',
         },
         {
           text: '网站相关',
