@@ -13,6 +13,7 @@ import Tags from './components/Tags.vue'
 import PageNavi from './components/PageNavi.vue'
 import PageCtrol from './components/PageCtrol.vue'
 import ArticleList from './components/ArticleList.vue'
+import RecommendArticles from './components/RecommendArticles.vue'
 import { inBrowser } from 'vitepress'
 import busuanzi from 'busuanzi.pure.js'
 import 'element-plus/theme-chalk/el-icon.css'
@@ -56,6 +57,7 @@ export default {
     app.component('PageCtrol', PageCtrol)
     app.component('ArticleList', ArticleList)
     app.component('PageNavi', PageNavi)
+    app.component('RecommendArticles', RecommendArticles)
     app.use(FloatingVue, {
       themes: {
         'tooltip': {

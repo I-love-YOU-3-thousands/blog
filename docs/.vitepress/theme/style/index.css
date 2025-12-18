@@ -7,3 +7,40 @@
 @import './custom-block.css';
 @import './marker.css';
 @import './rainbow.css';
+@import './cardPage.css';
+
+/* 文章分享页布局优化 */
+.m-share-layout .VPSidebar .nav {
+  border-top: none;
+  padding-top: 0;
+}
+
+/* 隐藏侧边栏导航分隔线 */
+.m-share-layout .VPSidebar .group + .group {
+  border-top: none;
+}
+
+/* 文章分享页 - 侧边栏宽度调整，尽量缩小给中间更多空间 */
+@media (min-width: 960px) {
+  .m-share-layout .VPSidebar {
+    width: 200px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  .m-share-layout .VPContent.has-sidebar {
+    padding-left: 200px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .m-share-layout .VPSidebar {
+    width: 220px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .m-share-layout .VPContent.has-sidebar {
+    padding-left: 220px;
+  }
+}

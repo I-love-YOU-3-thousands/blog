@@ -1,9 +1,8 @@
 <!-- 评论组件 -->
 <template>
   <Layout>
-    <template v-if="page.frontmatter.type == 'cardList'" #sidebar-nav-before>
-      <span class="date">🔥&nbsp;推荐文章：{{ frontmatter.type }}</span>
-      <button @click="next">开发中</button>
+    <template v-if="isResourceSharingPage" #sidebar-nav-before>
+      <RecommendArticles />
     </template>
     <template v-if="page.frontmatter.type == 'cardList'" #doc-before>
       <PageNavi type="top" />
@@ -87,6 +86,15 @@ const per_page = ref(23);
 //   },
 // });
 const { isDark, page, frontmatter } = useData();
+
+// 判断是否是文章分享相关页面（列表页或文章详情页）
+const isResourceSharingPage = computed(() => {
+  const path = page.value.relativePath || '';
+  return (
+    page.value.frontmatter?.type === 'cardList' ||
+    path.includes('resourceSharing/article/')
+  );
+});
 const show = ref(false);
 const previewImageInfo = reactive<{ url: string; list: string[]; idx: number }>(
   {
