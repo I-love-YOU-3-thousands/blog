@@ -154,7 +154,43 @@ export const set_sidebar = (pathname) => {
   const files = fs.readdirSync(dirPath);
   // 过滤掉
   const items = intersections(files, WHITE_LIST);
-  const a = getList(items, dirPath, pathname);
   // getList 函数后面会讲到
   return getList(items, dirPath, pathname);
+};
+
+/**
+ * 自动生成所有侧边栏配置
+ * @param {string} langDir - 语言目录，如 'zh'
+ * @param {string[]} excludeDirs - 排除的目录（不需要侧边栏的目录）
+ * @returns {Object} sidebar 配置对象
+ */
+export const generateAllSidebars = (langDir = 'zh', excludeDirs = ['nav']) => {
+  const langPath = path.join(DIR_PATH, langDir);
+  const dirs = fs.readdirSync(langPath, { withFileTypes: true });
+
+  const sidebar = {};
+
+  for (const dir of dirs) {
+    const name = dir.name;
+
+    // 只处理文件夹，排除特定目录和隐藏文件夹
+    if (!dir.isDirectory() || excludeDirs.includes(name) || name.startsWith('.')) {
+      continue;
+    }
+
+    // 检查目录下的 index.md 是否设置了 sidebar: false
+    const indexPath = path.join(langPath, name, 'index.md');
+    const content = readMarkdownFile(indexPath);
+    if (content && /sidebar:\s*false/.test(content)) {
+      continue;
+    }
+
+    // 生成路由路径和扫描路径
+    const routePath = `/${name}/`;           // 如 /guide/
+    const scanPath = `${langDir}/${name}`;   // 如 zh/guide
+
+    sidebar[routePath] = set_sidebar(scanPath);
+  }
+
+  return sidebar;
 };

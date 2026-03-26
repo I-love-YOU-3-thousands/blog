@@ -4,8 +4,9 @@ import {
   groupIconVitePlugin,
   localIconLoader,
 } from 'vitepress-plugin-group-icons';
-import { search as enSearch } from './en';
-import { search as zhSearch } from './zh';
+import { algoliaSearchEn, localSearchEn } from './en';
+import { algoliaSearchZh, localSearchZh } from './zh';
+import { docTabsPlugin } from '../theme/utils/docTabsPlugin';
 export const shared = defineConfig({
   title: 'Safety',
   base: '/blog/',
@@ -35,6 +36,7 @@ export const shared = defineConfig({
     // 组件插入h1标题下
     config: (md) => {
       md.use(groupIconMdPlugin);
+      md.use(docTabsPlugin);
       md.renderer.rules.heading_close = (tokens, idx, options, env, slf) => {
         let htmlResult = slf.renderToken(tokens, idx, options);
         if (tokens[idx].tag === 'h1') htmlResult += `<ArticleMetadata />`;
@@ -109,15 +111,27 @@ export const shared = defineConfig({
       },
     ],
 
+    // Algolia 搜索配置（需要申请自己的 appId 和 apiKey）
+    // search: {
+    //   provider: 'algolia',
+    //   options: {
+    //     appId: 'YOUR_APP_ID',
+    //     apiKey: 'YOUR_API_KEY',
+    //     indexName: 'YOUR_INDEX_NAME',
+    //     locales: {
+    //       ...algoliaSearchZh,
+    //       ...algoliaSearchEn,
+    //     },
+    //   },
+    // },
+
+    // 本地搜索配置
     search: {
-      provider: 'algolia',
+      provider: 'local',
       options: {
-        appId: '8J64VVRP8K',
-        apiKey: '52f578a92b88ad6abde815aae2b0ad7c',
-        indexName: 'vitepress',
         locales: {
-          ...zhSearch,
-          ...enSearch,
+          ...localSearchZh,
+          ...localSearchEn,
         },
       },
     },

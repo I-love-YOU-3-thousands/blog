@@ -4,7 +4,19 @@ import { computed, ref, onMounted } from "vue";
 import { countWord } from "../utils/functions";
 import type { Post } from "../utils/types";
 
-const { page } = useData();
+const { page, frontmatter } = useData();
+
+// 判断是否应该显示元数据（排除导航页、首页等特殊页面）
+const shouldShow = computed(() => {
+  const layoutClass = frontmatter.value?.layoutClass || '';
+  const type = frontmatter.value?.type || '';
+  // 排除导航页、首页、文章列表页
+  return !layoutClass.includes('m-nav-layout') && 
+         !layoutClass.includes('m-home-layout') &&
+         type !== 'cardList' &&
+         type !== 'home';
+});
+
 const date = computed(() => new Date(page.value.lastUpdated!));
 
 const wordCount = ref(0);
@@ -34,6 +46,7 @@ const props = defineProps<{
 const dataSource = computed(() => props.article);
 
 function analyze() {
+  if (!shouldShow.value) return;
   document.querySelectorAll(".meta-des").forEach((v) => v.remove());
   const docDomContainer = window.document.querySelector("#VPContent");
   const imgs = docDomContainer?.querySelectorAll<HTMLImageElement>(
@@ -53,7 +66,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="word">
+  <div v-if="shouldShow" class="word">
     <p>
       <svg
         t="1724572866572"
@@ -115,10 +128,11 @@ onMounted(() => {
     </p>
 
     <div class="tags">
-      <template v-if="type == 'card'">
+      <template v-if="type == 'card' && dataSource?.frontmatter?.tags">
         <span
           class="tag"
-          v-for="item in dataSource.frontmatter.tags.slice(0, 2)"
+          v-for="(item, index) in dataSource.frontmatter.tags.slice(0, 2)"
+          :key="index"
           ><a class="a" :href="withBase(`?tag=${item.toString()}`)">
             {{ "#" + item }}</a
           ></span

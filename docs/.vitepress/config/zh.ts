@@ -1,6 +1,6 @@
 import { createRequire } from 'module';
 import { defineConfig, type DefaultTheme } from 'vitepress';
-import { set_sidebar } from '../theme/utils/autoSiderbar.mjs';
+import { generateAllSidebars } from '../theme/utils/autoSiderbar.mjs';
 
 const require = createRequire(import.meta.url);
 const pkg = require('vitepress/package.json');
@@ -11,17 +11,24 @@ export const zh = defineConfig({
 
   themeConfig: {
     nav: nav(),
+
+    // 自动扫描 zh 目录下的所有文件夹生成侧边栏
+    // 第二个参数是排除的目录（不需要侧边栏的目录）
+    // 也可以在目录的 index.md 中设置 sidebar: false 来禁用
+    sidebar: generateAllSidebars('zh', ['nav']),
+
     // sidebar: {
     //   "/guide/": { base: "/guide/", items: sidebarGuide() },
     //   "/reference/": { base: "/reference/", items: sidebarReference() },
     // },
 
-    sidebar: {
-      '/guide/': set_sidebar('zh/guide'),
-      '/knowledgePopularization/': set_sidebar('zh/knowledgePopularization'),
-      '/interview/': set_sidebar('zh/interview'),
-      '/resourceSharing/': set_sidebar('zh/resourceSharing'),
-    },
+    // sidebar: {
+    //   '/guide/': set_sidebar('zh/guide'),
+    //   '/knowledgePopularization/': set_sidebar('zh/knowledgePopularization'),
+    //   '/algo/': set_sidebar('zh/algo'),
+    //   '/interview/': set_sidebar('zh/interview'),
+    //   '/resourceSharing/': set_sidebar('zh/resourceSharing'),
+    // },
 
     editLink: {
       pattern:
@@ -143,17 +150,35 @@ function nav(): DefaultTheme.NavItem[] {
       ],
     },
     {
-      text: '知识科普',
+      text: '算法学习',
+      activeMatch: '/algo/',
       items: [
         {
-          text: '科学上网',
-          link: '/knowledgePopularization/scientificInternet/introduce',
-          activeMatch: '/knowledgePopularization/scientificInternet',
+          text: '速成目录',
+          link: "/algo/quickLearn/index",
         },
+        {
+          //算法学习
+          text: '算法学习',
+          items: [
+            { text: '基础', link: '/algo/learn/basic/introduce' },
+            { text: '第零章', link: '/algo/learn/1zero/introduce' },
+          ],
+        },
+      ],
+    },
+    {
+      text: '知识科普',
+      items: [
         {
           text: '电脑相关',
           link: '/knowledgePopularization/computer/system/wepe',
           activeMatch: '/knowledgePopularization/computer',
+        },
+        {
+          text: '科学上网',
+          link: '/knowledgePopularization/scientificInternet/introduce',
+          activeMatch: '/knowledgePopularization/scientificInternet',
         },
         {
           text: '网站相关',
@@ -166,10 +191,16 @@ function nav(): DefaultTheme.NavItem[] {
       text: '项目开发',
       items: [
         {
-          text: 'React',
-          link: '/project/react/1',
-          activeMatch: '/project/react',
+          text: '中转api使用文档',
+          link: '/project/api/quickStart/account',
+          activeMatch: '/project/api',
         },
+        {
+          text: '项目搭建',
+          link: '/project/init/React/1',
+          activeMatch: '/project/init',
+        },
+        
       ],
     },
     {
@@ -272,8 +303,9 @@ function sidebarReference(): DefaultTheme.SidebarItem[] {
   ];
 }
 
-export const search: DefaultTheme.AlgoliaSearchOptions['locales'] = {
-  zh: {
+// Algolia 搜索中文配置
+export const algoliaSearchZh: DefaultTheme.AlgoliaSearchOptions['locales'] = {
+  root: {
     placeholder: '搜索文档',
     translations: {
       button: {
@@ -310,6 +342,27 @@ export const search: DefaultTheme.AlgoliaSearchOptions['locales'] = {
           suggestedQueryText: '你可以尝试查询',
           reportMissingResultsText: '你认为该查询应该有结果？',
           reportMissingResultsLinkText: '点击反馈',
+        },
+      },
+    },
+  },
+};
+
+// 本地搜索中文配置
+export const localSearchZh = {
+  root: {
+    translations: {
+      button: {
+        buttonText: '搜索文档',
+        buttonAriaLabel: '搜索文档',
+      },
+      modal: {
+        noResultsText: '无法找到相关结果',
+        resetButtonTitle: '清除查询条件',
+        footer: {
+          selectText: '选择',
+          navigateText: '切换',
+          closeText: '关闭',
         },
       },
     },

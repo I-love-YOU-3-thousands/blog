@@ -438,8 +438,58 @@ var 声明有如下弊端
 
 :::
 
+### 24.网页制作会用到的图片格式有哪些
+
+- png-8，png-24，jpeg，gif，svg
+- 新技术有webp，apng
+- Webp：Webp格式，谷歌开发的一种旨在加快图片加载速度的图片格式。图片压缩体积大约只有JPEG的2/3，并能节省大量的服务器带宽资源和数据空间。
+- 质量相同情况下，Webp格式图像的体积要比JPEG格式图像小40%
+
 ## 二、CSS 相关
 
 ### 1.css sprite 是什么,有什么优缺点
 
 CSS Sprite（CSS 精灵）是一种将多个小图片合并到一张大图中的技术。通过在页面中引用这张大图，并设置合适的 background-position 和尺寸，可以显示出所需的小图标或背景图案。
+
+优点：
+ - 减少`HTTP`请求数，极大地提高页面加载速度
+ - 增加图片信息重复度，提高压缩比，减少图片大小
+ - 更换风格方便，只需在一张或几张图片上修改颜色或样式即可实现
+
+缺点：
+ - 图片合并麻烦
+ - 维护麻烦，修改一个图片可能需要从新布局整个图片，样式
+
+### 2.display：none 与 visibility：hidden的区别
+- 相同点：都能让元素不可见
+- 区别：
+  - display：none会让元素完全从渲染树中消失，渲染的时候不占据任何空间；visibility：hidden不会让元素从渲染树消失，渲染树元素继续占据空间，只是内容不可见
+  - display：none是非继承属性，子孙节点消失由于元素从渲染树消失造成，通过修改子孙节点属性无法显示；visibility：hidden是继承属性，子孙节点消失由于继承了hidden，通过设置visibility：visible可以让子孙节点显示
+  - 修改常规流中元素的display通常会造成文档重排。修改visibility属性只会造成本元素的重绘。
+  - 读屏器不会读取display：none元素内容，会读取visibility：hidden元素内容。
+
+### 3.link与@import的区别
+
+1. link 是 HTML ⽅式， @import 是CSS⽅式
+2. link 最大限度⽀持并⾏下载， @import 过多嵌套导致串⾏下载， 出现 FOUC (⽂档样式 短暂失效)
+3. link 可以通过 rel="alternate stylesheet" 指定候选样式
+4. 浏览器对 link ⽀持早于 @import ， 可以使用 @import 对老浏览器隐藏样式
+5. @import 必须在样式规则之前， 可以在css⽂件中引用其他⽂件
+
+### 4.什么是FOUC?如何避免
+
+- Flash Of Unstyled Content ：用户定义样式表加载之前浏览器使用默认样式显示⽂档，用户样式加载渲染之后再从新显示⽂档， 造成⻚⾯闪烁。
+- 解决方法：把样式表放到⽂档的 `<head>`
+
+### 5.如何创建块级格式化上下文(block formatting context),BFC有什么用
+
+- 创建规则：
+  - 根元素
+  - 浮动元素 ( float 不取值为 none )
+  - 绝对定位元素 ( position 取值为 absolute 或 fixed )
+  - display 取值为 inline-block 、 table-cell 、 table-caption 、 flex 、 inline-flex 之⼀的元素
+  - overflow 不取值为 visible 的元素
+- 作用：
+  - 可以包含浮动元素
+  - 不被浮动元素覆盖
+  - 阻止父子元素的 margin 折叠

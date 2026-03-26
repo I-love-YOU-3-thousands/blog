@@ -7,12 +7,14 @@ import update from "./components/update.vue"
 import ArticleMetadata from "./components/ArticleMetadata.vue"
 import backtotop from "./components/backtotop.vue";
 import Linkcard from "./components/Linkcard.vue"
+import DocTabs from "./components/DocTabs.vue"
 import MNavLinks from './components/MNavLinks.vue'
 import Archives from './components/Archives.vue'
 import Tags from './components/Tags.vue'
 import PageNavi from './components/PageNavi.vue'
 import PageCtrol from './components/PageCtrol.vue'
 import ArticleList from './components/ArticleList.vue'
+import RecommendArticles from './components/RecommendArticles.vue'
 import { inBrowser } from 'vitepress'
 import busuanzi from 'busuanzi.pure.js'
 import 'element-plus/theme-chalk/el-icon.css'
@@ -50,12 +52,14 @@ export default {
     app.component('ArticleMetadata', ArticleMetadata)
     app.component('backtotop', backtotop)
     app.component('Linkcard', Linkcard)
+    app.component('DocTabs', DocTabs)
     app.component('MNavLinks', MNavLinks)
     app.component('Tags', Tags)
     app.component('Archives', Archives)
     app.component('PageCtrol', PageCtrol)
     app.component('ArticleList', ArticleList)
     app.component('PageNavi', PageNavi)
+    app.component('RecommendArticles', RecommendArticles)
     app.use(FloatingVue, {
       themes: {
         'tooltip': {
