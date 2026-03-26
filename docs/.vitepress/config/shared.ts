@@ -6,6 +6,7 @@ import {
 } from 'vitepress-plugin-group-icons';
 import { algoliaSearchEn, localSearchEn } from './en';
 import { algoliaSearchZh, localSearchZh } from './zh';
+import { docTabsPlugin } from '../theme/utils/docTabsPlugin';
 export const shared = defineConfig({
   title: 'Safety',
   base: '/blog/',
@@ -35,6 +36,7 @@ export const shared = defineConfig({
     // 组件插入h1标题下
     config: (md) => {
       md.use(groupIconMdPlugin);
+      md.use(docTabsPlugin);
       md.renderer.rules.heading_close = (tokens, idx, options, env, slf) => {
         let htmlResult = slf.renderToken(tokens, idx, options);
         if (tokens[idx].tag === 'h1') htmlResult += `<ArticleMetadata />`;

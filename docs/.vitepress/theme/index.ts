@@ -7,6 +7,7 @@ import update from "./components/update.vue"
 import ArticleMetadata from "./components/ArticleMetadata.vue"
 import backtotop from "./components/backtotop.vue";
 import Linkcard from "./components/Linkcard.vue"
+import DocTabs from "./components/DocTabs.vue"
 import MNavLinks from './components/MNavLinks.vue'
 import Archives from './components/Archives.vue'
 import Tags from './components/Tags.vue'
@@ -51,6 +52,7 @@ export default {
     app.component('ArticleMetadata', ArticleMetadata)
     app.component('backtotop', backtotop)
     app.component('Linkcard', Linkcard)
+    app.component('DocTabs', DocTabs)
     app.component('MNavLinks', MNavLinks)
     app.component('Tags', Tags)
     app.component('Archives', Archives)

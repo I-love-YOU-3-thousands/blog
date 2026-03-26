@@ -15,7 +15,7 @@ export const zh = defineConfig({
     // 自动扫描 zh 目录下的所有文件夹生成侧边栏
     // 第二个参数是排除的目录（不需要侧边栏的目录）
     // 也可以在目录的 index.md 中设置 sidebar: false 来禁用
-    sidebar: generateAllSidebars('zh', ['nav', 'project']),
+    sidebar: generateAllSidebars('zh', ['nav']),
 
     // sidebar: {
     //   "/guide/": { base: "/guide/", items: sidebarGuide() },
@@ -191,10 +191,16 @@ function nav(): DefaultTheme.NavItem[] {
       text: '项目开发',
       items: [
         {
-          text: 'React',
-          link: '/project/react/1',
-          activeMatch: '/project/react',
+          text: '中转api使用文档',
+          link: '/project/api/quickStart/account',
+          activeMatch: '/project/api',
         },
+        {
+          text: '项目搭建',
+          link: '/project/init/React/1',
+          activeMatch: '/project/init',
+        },
+        
       ],
     },
     {

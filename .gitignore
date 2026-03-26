@@ -1,3 +1,6 @@
 node_modules 
 cache
 dist
+docs/.vitepress/.temp/
+docs/.vitepress/cache/
+docs/.vitepress/dist/
