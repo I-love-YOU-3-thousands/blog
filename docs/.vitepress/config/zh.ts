@@ -161,8 +161,8 @@ function nav(): DefaultTheme.NavItem[] {
           //算法学习
           text: '算法学习',
           items: [
-            { text: '基础', link: '/algo/learn/basic/introduce', activeMatch: '/algo/learn/basic' },
-            { text: '第零章', link: '/algo/learn/1zero/introduce', activeMatch: '/algo/learn/1zero' },
+            { text: '基础', link: '/algo/learn/basic/introduce' },
+            { text: '第零章', link: '/algo/learn/1zero/introduce' },
           ],
         },
       ],
