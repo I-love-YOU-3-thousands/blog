@@ -36,7 +36,7 @@ sandbox = "elevated"
 name = "custom"
 wire_api = "responses"
 requires_openai_auth = true
-base_url = "http://e6q77.online/v1"
+base_url = "https://e6q77.online/v1"
 
 [projects]
 trust_level = "trusted"
@@ -85,7 +85,7 @@ model_auto_compact_token_limit = 900000
 name = "custom"
 wire_api = "responses"
 requires_openai_auth = true
-base_url = "http://e6q77.online/v1"
+base_url = "https://e6q77.online/v1"
 
 [projects]
 trust_level = "trusted"
